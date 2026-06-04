@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.log
+nohup.out
+*.bak
+results/*.npy
+results_large/*.npy
+results_nt/*_embeddings.npy
+results_nt/*_pvr_features.npy
+legacy/
+.ipynb_checkpoints/
+.DS_Store
+download*.*

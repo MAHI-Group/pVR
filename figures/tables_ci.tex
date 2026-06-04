@@ -1,0 +1,37 @@
+\begin{table}[!t]
+\centering
+\footnotesize
+\caption{Classification accuracy (\%) in the low-sample regime. Each cell is mean $\pm$ std over 50 fold accuracies (10 seeds $\times$ 5 folds). pVR row marks best variant: $\dagger$~5-NN, $\ddagger$~XGBoost, $\S$~SVM.}
+\label{tab:main-small}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccccc}
+\hline
+Method & Mam. & CoV-2 & HRV & Inf. & HEV & Ebola \\
+\hline
+FFP-JS & 53.9 $\pm$ 18.2 & 42.6 $\pm$ 14.7 & 100.0 $\pm$ 0.0 & 62.2 $\pm$ 12.4 & 66.0 $\pm$ 6.5 & 76.8 $\pm$ 6.7 \\
+NVM & 46.3 $\pm$ 14.9 & 47.5 $\pm$ 17.0 & 96.7 $\pm$ 2.4 & 61.9 $\pm$ 12.5 & 65.6 $\pm$ 6.7 & 72.5 $\pm$ 2.6 \\
+MinHash & 50.4 $\pm$ 14.3 & 25.7 $\pm$ 7.6 & 98.0 $\pm$ 2.2 & 53.9 $\pm$ 13.8 & 57.0 $\pm$ 7.5 & 78.9 $\pm$ 5.7 \\
+$k$-mer freq & 49.9 $\pm$ 14.9 & 45.1 $\pm$ 16.8 & 100.0 $\pm$ 0.0 & 60.0 $\pm$ 12.3 & 65.2 $\pm$ 5.6 & 57.9 $\pm$ 2.1 \\
+\texttt{pVR} & \textbf{62.0 $\pm$ 13.7}$^{\dagger}$ & 42.1 $\pm$ 15.7$^{\ddagger}$ & \textbf{100.0 $\pm$ 0.0}$^{\dagger}$ & \textbf{72.5 $\pm$ 11.0}$^{\ddagger}$ & \textbf{67.0 $\pm$ 8.2}$^{\S}$ & \textbf{100.0 $\pm$ 0.0}$^{\S}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\centering
+\footnotesize
+\caption{Classification accuracy (\%) in the large-sample regime. Each cell is mean $\pm$ std over 50 fold accuracies (10 seeds $\times$ 5 folds). pVR row marks best variant: $\dagger$~5-NN, $\ddagger$~XGBoost, $\S$~SVM.}
+\label{tab:main-large}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccccc}
+\hline
+Method & Dengue & Ebola & HEV & HRV & Inf. & CoV-2 \\
+\hline
+FFP-JS & 100.0 $\pm$ 0.0 & 100.0 $\pm$ 0.0 & 97.3 $\pm$ 1.5 & 99.4 $\pm$ 1.4 & 99.0 $\pm$ 1.2 & 99.2 $\pm$ 1.0 \\
+NVM & 99.7 $\pm$ 0.5 & 100.0 $\pm$ 0.0 & 95.6 $\pm$ 2.0 & 96.3 $\pm$ 2.3 & 99.0 $\pm$ 1.2 & 96.1 $\pm$ 2.6 \\
+MinHash & 100.0 $\pm$ 0.0 & 100.0 $\pm$ 0.0 & 98.6 $\pm$ 1.4 & 94.9 $\pm$ 2.7 & 99.7 $\pm$ 0.7 & 70.9 $\pm$ 3.7 \\
+$k$-mer freq & 100.0 $\pm$ 0.0 & 100.0 $\pm$ 0.0 & 99.9 $\pm$ 0.6 & 99.4 $\pm$ 1.4 & 98.8 $\pm$ 1.3 & 99.4 $\pm$ 0.9 \\
+\texttt{pVR} & 99.4 $\pm$ 0.8$^{\ddagger}$ & \textbf{100.0 $\pm$ 0.0}$^{\dagger}$ & 98.5 $\pm$ 3.1$^{\S}$ & 99.2 $\pm$ 1.1$^{\S}$ & 99.5 $\pm$ 0.9$^{\S}$ & \textbf{99.6 $\pm$ 0.8}$^{\S}$ \\
+\hline
+\end{tabular}
+\end{table}

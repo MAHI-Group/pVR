@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Runtime in seconds, measured on a 12-core AMD Ryzen workstation with 64\,GB RAM. Column ``pVR dist.'' is the time to compute $D_p$ and $D_c$. Column ``pVR feat.'' is the time to compute the bi-filtration grid and extract features. Column ``Baselines'' is the total time to compute all four baseline distance matrices.}
+\label{tab:runtime}
+\begin{tabular}{lrrrr}
+\hline
+Dataset & $N$ & pVR dist. & pVR feat. & Baselines \\
+\hline
+\multicolumn{5}{l}{\textit{Low-sample}} \\
+Mammalian & 30 & 0.3 & 0.3 & 0.8 \\
+SARS-CoV-2 & 31 & 0.5 & 0.5 & 1.0 \\
+HRV & 150 & 0.8 & 2.0 & 2.3 \\
+Influenza & 59 & 0.1 & 0.3 & 0.2 \\
+HEV & 29 & 0.1 & 0.2 & 0.4 \\
+Ebola & 28 & 0.3 & 0.3 & 0.8 \\
+\hline
+\multicolumn{5}{l}{\textit{Large-sample}} \\
+Dengue & 400 & 3.1 & 25.3 & 9.1 \\
+Ebola & 99 & 1.2 & 1.2 & 3.2 \\
+HEV & 73 & 0.3 & 0.4 & 1.2 \\
+HRV & 300 & 1.6 & 12.7 & 5.1 \\
+Influenza & 300 & 0.7 & 8.2 & 1.9 \\
+SARS-CoV-2 & 316 & 6.0 & 21.4 & 13.0 \\
+\hline
+\end{tabular}
+\end{table}

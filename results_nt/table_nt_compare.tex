@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Comparison of \texttt{pVR} with Nucleotide Transformer~v2 (500M, multi-species) zero-shot embeddings on three low-sample benchmarks. NT embeddings are mean-pooled hidden states from the final layer; long sequences are chunked and averaged. Both methods use repeated stratified CV (up to $50$ folds) and the best-performing classifier per row.}
+\label{tab:nt_compare}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\hline
+Dataset & \texttt{pVR} (best) & NT v2 (best probe) \\
+\hline
+Ebola & 100.0 $\pm$ 0.0$^\S$ & 88.6 $\pm$ 9.9$^\S$ \\
+Mammalian & 62.0 $\pm$ 13.7$^\dagger$ & 54.9 $\pm$ 15.2$^\S$ \\
+Influenza HA & 72.5 $\pm$ 11.0$^\ddagger$ & 65.8 $\pm$ 8.8$^\S$ \\
+\hline
+\end{tabular}
+\end{table}
