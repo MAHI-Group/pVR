@@ -1,4 +1,4 @@
-# pVR: p-adic Bi-Filtered Simplicial Complexes for Genomic Classification
+## pVR: p-adic Bi-Filtered Simplicial Complexes for Genomic Classification
 
 Code and data for the paper *p-adic Bi-Filtrations for Topological Machine
 Learning on Genomic Sequences*.
@@ -10,12 +10,12 @@ Learning on Genomic Sequences*.
   <sub>Overview of the pVR pipeline. The figure is adapted from Figure 3 of the paper.</sub>
 </p>
 
-## Notation
+### Notation
 
 The code uses `D_H` for the compositional distance matrix (L1 distance on
 k-mer frequency vectors); the paper denotes this `D_c`. Same object.
 
-## Requirements
+### Requirements
 
 A full conda environment is given in `pvr_env.yml`, but it includes many
 extra packages. Minimally, the pipeline needs: 
@@ -26,13 +26,13 @@ The Nucleotide Transformer comparison (`nt_compare.py`) additionally needs
 
 GUDHI is easiest via conda: `conda install -c conda-forge gudhi`.
 
-## Data
+### Data
 
 The benchmark sequences and labels are included under `data/` (low-sample)
 and `data_large/` (large-sample). To rebuild them from NCBI instead, see
 `download_data.py` and `download_large.py` (an NCBI Entrez email is required).
 
-## Running
+### Running
 
 Full pipeline (main results, ablations, sensitivity) on each regime:
 
@@ -43,7 +43,7 @@ python run_full_eff.py --datadir data_large/ --outdir results_large/ --skip_sens
 
 Each dataset completes in seconds on a 12-core CPU; no GPU is needed.
 
-## Reproducing the tables
+### Reproducing the tables
 
 ```bash
 python make_tables_ci.py   --small results/all_results.json \
@@ -56,7 +56,7 @@ python make_aux_tables.py  --small_results results/all_results.json \
 Precomputed results are in `results/all_results.json` and
 `results_large/all_results.json`.
 
-## Files
+### Files
 
 - `pvr_eff.py` — core method (encoding, distances, bi-filtration, classification)
 - `baselines.py` — FFP-JS, NVM, MinHash baselines
@@ -66,6 +66,6 @@ Precomputed results are in `results/all_results.json` and
 - `plot_results.py`, `make_figure.py` — figures
 - `download_data.py`, `download_large.py` — NCBI data acquisition
 
-## Citation
+### Citation
 
 A citation will be added once the preprint is online.
