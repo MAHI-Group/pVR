@@ -1,82 +1,69 @@
-# pVR: p-Adic Bi-Filtered Simplicial Complexes for Genomic Classification
+# pVR: p-adic Bi-Filtered Simplicial Complexes for Genomic Classification
+
+Code and data for the paper *p-adic Bi-Filtrations for Topological Machine
+Learning on Genomic Sequences*.
+
+<p align="center">
+  <img src="figures/pVR_chatgpt_june2026.png" alt="pVR pipeline overview" width="60%">
+</p>
+<p align="center"><sub>Pipeline overview (figure generated with ChatGPT Pro and checked against the paper, mainly Figure 3).</sub></p>
 
 ## Notation
 
-For historical reasons, the code uses `D_H` for the compositional
-distance matrix (L1 distance on k-mer frequency vectors). In the
-paper this is denoted `D_c`. The two refer to the same object.
+The code uses `D_H` for the compositional distance matrix (L1 distance on
+k-mer frequency vectors); the paper denotes this `D_c`. Same object.
 
-## Setup
+## Requirements
 
-```bash
-pip install -r requirements.txt
-```
+A full conda environment is given in `pvr_env.yml`, but it includes many
+extra packages. Minimally, the pipeline needs: 
+`numpy`, `scipy`, `scikit-learn`, `xgboost`, `gudhi`, `joblib`, `biopython`, `pandas`.
 
-GUDHI may require: `conda install -c conda-forge gudhi` if pip fails.
+The Nucleotide Transformer comparison (`nt_compare.py`) additionally needs
+`torch`, `transformers`, and `umap-learn`. Plotting needs `matplotlib`.
 
-## Step-by-step
+GUDHI is easiest via conda: `conda install -c conda-forge gudhi`.
 
-### 1. Download data
+## Data
 
-```bash
-python download_data.py --email YOUR_EMAIL@domain.com --datasets mammalian_mito sars_cov2
-```
+The benchmark sequences and labels are included under `data/` (low-sample)
+and `data_large/` (large-sample). To rebuild them from NCBI instead, see
+`download_data.py` and `download_large.py` (an NCBI Entrez email is required).
 
-For HRV and Influenza (search-based, labels need manual curation):
-```bash
-python download_data.py --email YOUR_EMAIL@domain.com --datasets hrv influenza_ha
-```
+## Running
 
-HRV labels are auto-assigned from FASTA descriptions. Check `data/hrv.fasta`
-descriptions to verify serotype assignments. For influenza, you need to
-manually create `data/influenza_ha_labels.tsv` with columns `accession` and
-`label` (subtypes H1, H3, H5, etc.).
-
-### 2. Run experiments
-
-Full pipeline (main + sensitivity + grid resolution):
-```bash
-python run_experiments.py --datadir data/ --outdir results/
-```
-
-Quick run (main experiment only):
-```bash
-python run_experiments.py --datadir data/ --outdir results/ --experiments main
-```
-
-Custom parameters:
-```bash
-python run_experiments.py --datadir data/ --outdir results/ --k 7 --p 5 --Gp 12 --Gh 15
-```
-
-### 3. Generate figures
+Full pipeline (main results, ablations, sensitivity) on each regime:
 
 ```bash
-python plot_results.py --resultsdir results/ --outdir figures/
+python run_full_eff.py --datadir data/       --outdir results/
+python run_full_eff.py --datadir data_large/ --outdir results_large/ --skip_sensitivity
 ```
 
-### 4. Fill in the paper
+Each dataset completes in seconds on a 12-core CPU; no GPU is needed.
 
-Results are in `results/all_results.json`. The experiment script prints a
-LaTeX-ready summary table. Copy numbers into `pVR_paper.tex` placeholder tables.
+## Reproducing the tables
+
+```bash
+python make_tables_ci.py   --small results/all_results.json \
+                           --large results_large/all_results.json --out tables_ci.tex
+python make_aux_tables.py  --small_results results/all_results.json \
+                           --large_results results_large/all_results.json \
+                           --small_data data/ --large_data data_large/
+```
+
+Precomputed results are in `results/all_results.json` and
+`results_large/all_results.json`.
 
 ## Files
 
-- `pvr.py` -- core algorithms (encoding, distances, bi-filtration, classification)
-- `download_data.py` -- NCBI data acquisition with curated accession lists
-- `run_experiments.py` -- full experiment pipeline with ablations
-- `plot_results.py` -- paper figure generation
-- `pVR_paper.tex` -- manuscript with placeholders
+- `pvr_eff.py` — core method (encoding, distances, bi-filtration, classification)
+- `baselines.py` — FFP-JS, NVM, MinHash baselines
+- `run_full_eff.py` — full experiment pipeline
+- `nt_compare.py` — Nucleotide Transformer v2 comparison
+- `make_tables_ci.py`, `make_aux_tables.py` — regenerate paper tables
+- `plot_results.py`, `make_figure.py` — figures
+- `download_data.py`, `download_large.py` — NCBI data acquisition
 
-## Expected runtime
+## Citation
 
-- Mammalian mitochondrial (~30 sequences): ~10 minutes total
-- SARS-CoV-2 (~40 sequences): ~15 minutes total
-- Full pipeline with sensitivity analysis: ~2-3 hours
-
-## Notes on GISAID
-
-The CAKL paper uses 44 SARS-CoV-2 genomes from GISAID. Our script downloads
-NCBI alternatives for the same variants. For exact replication, register at
-https://gisaid.org and download their accessions. Place as
-`data/sars_cov2_gisaid.fasta` with corresponding label file.
+A citation will be added once the preprint is online.
