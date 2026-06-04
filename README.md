@@ -6,7 +6,9 @@ Learning on Genomic Sequences*.
 <p align="center">
   <img src="figures/pVR_chatgpt_june2026.png" alt="pVR pipeline overview" width="80%">
 </p>
-<p align="center"><sub>Pipeline overview (figure generated with ChatGPT Pro and checked against the paper, mainly Figure 3).</sub></p>
+<p align="center">
+  <sub>Overview of the pVR pipeline. The figure is adapted from Figure 3 of the paper.</sub>
+</p>
 
 ## Notation
 
