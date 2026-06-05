@@ -68,4 +68,14 @@ Precomputed results are in `results/all_results.json` and
 
 ### Citation
 
-A citation will be added once the preprint is online.
+If you use this code or data, please cite our paper:
+
+```bibtex
+@article{dash2026pvr,
+  title   = {$p$-adic Bi-Filtrations for Topological Machine Learning on Genomic Sequences},
+  author  = {Dash, Tirtharaj and Sachdeva, Gunja},
+  journal = {arXiv preprint arXiv:2606.06117},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2606.06117}
+}
+```

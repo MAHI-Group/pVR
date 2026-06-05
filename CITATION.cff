@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this codebase or data, please cite the preprint below."
+title: "pVR: p-adic Bi-Filtered Simplicial Complexes for Genomic Classification"
+authors:
+  - family-names: Dash
+    given-names: Tirtharaj
+    affiliation: "BITS Pilani, K K Birla Goa Campus"
+    orcid: "https://orcid.org/0000-0001-5965-8286"
+  - family-names: Sachdeva
+    given-names: Gunja
+    affiliation: "BITS Pilani, K K Birla Goa Campus"
+repository-code: "https://github.com/MAHI-Group/pVR"
+license: MIT
+preferred-citation:
+  type: article
+  title: "p-adic Bi-Filtrations for Topological Machine Learning on Genomic Sequences"
+  authors:
+    - family-names: Dash
+      given-names: Tirtharaj
+    - family-names: Sachdeva
+      given-names: Gunja
+  year: 2026
+  journal: "arXiv preprint arXiv:2606.06117"
+  url: "https://doi.org/10.48550/arXiv.2606.06117"
